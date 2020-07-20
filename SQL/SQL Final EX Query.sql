@@ -1218,11 +1218,7 @@ SELECT DISTINCT students.StudentId AS student_ID,
 	students.LastName AS student_last_name,
 	COUNT(classrooms.courseID) OVER (PARTITION BY students.StudentId) AS total_num_of_courses,
 	departments.DepartmentName AS department_name,
-		AVG (classrooms.degree) OVER (PARTITION BY students.StudentId, departments.DepartmentName) AS department_GPA,
-	--AVG (CASE WHEN (departments.DepartmentName='English') THEN (classrooms.degree) END) AS 'English_GPA',
-	--AVG (CASE WHEN (departments.DepartmentName='Science') THEN (classrooms.degree) END) AS 'Science_GPA',
-	--AVG (CASE WHEN (departments.DepartmentName='Arts') THEN (classrooms.degree) END) AS 'Arts_GPA',
-	--AVG (CASE WHEN (departments.DepartmentName='Sport') THEN (classrooms.degree) END) AS 'Sport_GPA',
+	AVG (classrooms.degree) OVER (PARTITION BY students.StudentId, departments.DepartmentName) AS department_GPA,
 	AVG (classrooms.degree) OVER (PARTITION BY students.StudentId) AS total_GPA
 FROM students
 INNER JOIN classrooms on students.StudentId=classrooms.StudentId
