@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://localhost:12244/session/report.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Data Visualization</title>
+      
+      <link rel="stylesheet" href="./1 Data Visualization ORIGINAL DATA_files/jquery.mobile-1.4.5.min.css">
+
+      <script src="./1 Data Visualization ORIGINAL DATA_files/jquery-1.10.2.js.download"></script>
+      <script>
+      $(document).ready(function(){
+      $('.onetoone').hide();
+      });
+
+      $(function() {
+      $('.origimg').click(function(e) {
+      $('#popup_img').attr('src',$(this).attr('src'));
+      $('#myContainer').hide();
+      var pos = $(document).scrollTop();
+      $('#myContainer').css({'top':pos+20,'left':250, 'position':'absolute', 'border':'1px solid black', 'padding':'0px'});
+      $('#myContainer').show();
+      });
+      $('#myContainer').click(function(e) {
+      $('#myContainer').hide();
+      });
+
+      $('#myform2').submit(function(e) {
+      e.preventDefault();
+      });
+
+      $('#onetoone').on('click',function() {
+      console.log('onetone button - 1');
+      $('#onetoone').hide();
+      $('#aslist').show();
+      // To show only individual rows:
+      $('.Row').hide();
+      $('.onetoone').show();
+      // then we iterate
+      var i = $('.Row').length;
+      // Then we iterate
+      var nxt = $('#idx').val();
+      if (nxt < i & nxt >0) {
+      $('.Row').hide();
+      $('.Row').eq(0).show();
+      $('.Row').eq(nxt).show();
+      } else {
+      $('#idx').val(1)
+      }
+      console.log('onetone button - 2');
+      });
+
+      $('#aslist').on('click',function() {
+      console.log('aslist button - 1');
+      $('#onetoone').show();
+      $('#aslist').hide();
+      $('.onetoone').hide();
+      $('.Row').show();
+      console.log('aslist button - 2');
+      });
+
+      $('#less').on('click',function(){
+      console.log('less button - 1');
+      var i = $('.Row').length;
+      var nxt = parseInt($('#idx').val(),10) - 1;
+      if (nxt < i & nxt >0) {
+      $('#idx').val(nxt)
+      $('.Row').hide();
+      $('.Row').eq(0).show();
+      $('.Row').eq(nxt).show();
+      } else {
+      $('#idx').val(1)
+      }
+      console.log('less button - 2');
+      });
+
+      $('#more').on('click',function(){
+      console.log('more button - 1');
+      var i = $('.Row').length;
+      var nxt = parseInt($('#idx').val(),10) + 1;
+      if (nxt < i & nxt >0) {
+      $('#idx').val(nxt)
+      $('.Row').hide();
+      $('.Row').eq(0).show();
+      $('.Row').eq(nxt).show();
+      } else {
+      $('#idx').val(i)
+      }
+      console.log('more button - 2');
+      });
+
+      $('#idx').on('change', function(){
+      console.log('idx changed - 1');
+      var i = $('.Row').length;
+      var nxt = $('#idx').val();
+      if (nxt < i & nxt >0) {
+      $('#idx').val(nxt)
+      $('.Row').hide();
+      $('.Row').eq(0).show();
+      $('.Row').eq(nxt).show();
+      } else {
+      $('#idx').val(i)
+      }
+      console.log('idx changed - 2');
+      });
+      });
+
+      </script>
+
+      <style type="text/css">
+      .Table
+      {
+      display: table;
+      }
+      .Title
+      {
+      display: table-caption;
+      text-align: center;
+      font-weight: bold;
+      font-size: larger;
+      background-color:#4C6F50;
+      color: #fff;
+      }
+      .Row
+      {
+      display: table-row;
+      }
+      .Row:nth-child(even) {
+        background-color: #56882433;
+      }
+      .Cell
+      {
+      display: table-cell;
+      border: solid;
+      border-width: thin;
+      padding-left: 5px;
+      padding-right: 5px;
+      vertical-align: top;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      }
+      </style>
+
+      <script style="display: none;">var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=
+new Date,c={},d=Object.keys(a||{}),e=0,f;f=d[e];e++)if(a.hasOwnProperty(f)&&"undefined"!=typeof a[f])try{var g=[];c[f]=JSON.stringify(a[f],function(l,t){try{if("function"!==typeof t){if("object"===typeof t&&null!==t){if(t instanceof HTMLElement||t instanceof Node||-1!=g.indexOf(t))return;g.push(t)}return t}}catch(A){}})}catch(l){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);</script></head>
+
+      <body style="">
+      <div id="pageone" data-role="main" class="ui-content">
+      
+<p></p><p></p><h1> Data Visualization &amp; Exploration </h1>
+                <form>
+                <input type="button" id="onetoone" value="Show as Cards">
+                <input type="button" id="aslist" class="onetoone" value="Show as List" style="display: none;">
+                </form>
+                <p>
+                
+</p><p></p><p>
+                </p><div class="Table">
+                <div class="Row">
+                <div class="Cell Title"> Variable </div>
+                <div class="Cell Title"> Distribution </div>
+                <div class="Cell Title"> Descriptive <br> Statistics</div>
+                <div class="Cell Title"> Outliers </div>  </div>
+<div class="Row"><div class="Cell"><b> �..Area </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/�..Area_1.png" height="150" width="150"><br></div>
+<div class="Cell"> <u>Data type</u>: Categorical Data <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %) </p><p> <u>Number of levels</u>:  1627 <br> </p><ul> </ul></div>
+<div class="Cell"></div>
+</div>
+<div class="Row"><div class="Cell"><b> Neighborhood </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Neighborhood_1.png" height="150" width="150"><br></div>
+<div class="Cell"> <u>Data type</u>: Categorical Data <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %) </p><p> <u>Number of levels</u>:  226 <br> </p><ul> </ul></div>
+<div class="Cell"></div>
+</div>
+<div class="Row"><div class="Cell"><b> LA_Crimes </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/LA_Crimes_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  41.36 	 <u>StdDev</u>:  411.5 <br><u>Median</u>:  21.94 	 <u>IQR</u>:  15.69 - 32.35 <br><u>Min</u>:  0 	 <u>Max</u>:  1.62e+04 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/LA_Crimes_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  102  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Total_Population </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Total_Population_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  4216 	 <u>StdDev</u>:  1473 <br><u>Median</u>:  4062 	 <u>IQR</u>:  3170 - 5112 <br><u>Min</u>:  44 	 <u>Max</u>:  1.292e+04 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Total_Population_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  18  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Under_Age_18 </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Under_Age_18_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  22.7 	 <u>StdDev</u>:  7.445 <br><u>Median</u>:  22.94 	 <u>IQR</u>:  18.25 - 27.67 <br><u>Min</u>:  0 	 <u>Max</u>:  63.64 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Under_Age_18_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  29  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Ages_18.24 </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_18.24_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  10.7 	 <u>StdDev</u>:  7.072 <br><u>Median</u>:  10.18 	 <u>IQR</u>:  7.847 - 12.31 <br><u>Min</u>:  0 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_18.24_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  40  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Ages_25.34 </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_25.34_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  15.82 	 <u>StdDev</u>:  6.277 <br><u>Median</u>:  15.03 	 <u>IQR</u>:  12.21 - 18.13 <br><u>Min</u>:  0 	 <u>Max</u>:  45.05 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_25.34_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  106  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Ages_35.44 </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_35.44_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  14.16 	 <u>StdDev</u>:  3.518 <br><u>Median</u>:  14 	 <u>IQR</u>:  11.95 - 16.12 <br><u>Min</u>:  0 	 <u>Max</u>:  31.69 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_35.44_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  43  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Ages_45.54 </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_45.54_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  13.78 	 <u>StdDev</u>:  3.445 <br><u>Median</u>:  13.52 	 <u>IQR</u>:  11.7 - 15.81 <br><u>Min</u>:  0 	 <u>Max</u>:  41.96 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_45.54_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  35  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Ages_55.64 </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_55.64_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  11.07 	 <u>StdDev</u>:  3.694 <br><u>Median</u>:  10.78 	 <u>IQR</u>:  8.605 - 13.45 <br><u>Min</u>:  0 	 <u>Max</u>:  28.69 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_55.64_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  24  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Ages_65_._Older </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_65_._Older_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  11.77 	 <u>StdDev</u>:  5.703 <br><u>Median</u>:  10.88 	 <u>IQR</u>:  7.814 - 14.8 <br><u>Min</u>:  0 	 <u>Max</u>:  51.2 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Ages_65_._Older_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  34  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Young_Adults_Enrolled_in_School </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Young_Adults_Enrolled_in_School_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1607 / 1617  ( 99.38 %) <br> <u>Missing</u>:  10  ( 0.6184 %)</p><p> <u>Mean</u>:  45.12 	 <u>StdDev</u>:  16.85 <br><u>Median</u>:  43.88 	 <u>IQR</u>:  33.33 - 54.94 <br><u>Min</u>:  0 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Young_Adults_Enrolled_in_School_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  29  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> College_Graduation_Rate </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/College_Graduation_Rate_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1612 / 1617  ( 99.69 %) <br> <u>Missing</u>:  5  ( 0.3092 %)</p><p> <u>Mean</u>:  28.29 	 <u>StdDev</u>:  20.86 <br><u>Median</u>:  22.27 	 <u>IQR</u>:  10.72 - 42.83 <br><u>Min</u>:  0 	 <u>Max</u>:  84.22 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/College_Graduation_Rate_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Less_Than_High_School </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Less_Than_High_School_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1612 / 1617  ( 99.69 %) <br> <u>Missing</u>:  5  ( 0.3092 %)</p><p> <u>Mean</u>:  25.01 	 <u>StdDev</u>:  18.09 <br><u>Median</u>:  22.63 	 <u>IQR</u>:  8.139 - 39.69 <br><u>Min</u>:  0 	 <u>Max</u>:  74.83 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Less_Than_High_School_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Labor_Force_Participation_Rate </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Labor_Force_Participation_Rate_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  64.4 	 <u>StdDev</u>:  8.839 <br><u>Median</u>:  64.39 	 <u>IQR</u>:  59.77 - 69.38 <br><u>Min</u>:  0 	 <u>Max</u>:  94.36 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Labor_Force_Participation_Rate_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  42  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Unemployment_Rate </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Unemployment_Rate_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1609 / 1617  ( 99.51 %) <br> <u>Missing</u>:  8  ( 0.4947 %)</p><p> <u>Mean</u>:  10.39 	 <u>StdDev</u>:  4.388 <br><u>Median</u>:  9.806 	 <u>IQR</u>:  7.344 - 12.96 <br><u>Min</u>:  0 	 <u>Max</u>:  41.08 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Unemployment_Rate_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  30  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Homeownership_Rate </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Homeownership_Rate_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1608 / 1617  ( 99.44 %) <br> <u>Missing</u>:  9  ( 0.5566 %)</p><p> <u>Mean</u>:  46.64 	 <u>StdDev</u>:  26.94 <br><u>Median</u>:  45.86 	 <u>IQR</u>:  24.17 - 70.05 <br><u>Min</u>:  0 	 <u>Max</u>:  98 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Homeownership_Rate_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Renter_Rate </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Renter_Rate_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1608 / 1617  ( 99.44 %) <br> <u>Missing</u>:  9  ( 0.5566 %)</p><p> <u>Mean</u>:  53.36 	 <u>StdDev</u>:  26.94 <br><u>Median</u>:  54.14 	 <u>IQR</u>:  29.95 - 75.83 <br><u>Min</u>:  2 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Renter_Rate_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Immigrant_Citizen </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Immigrant_Citizen_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1611 / 1617  ( 99.63 %) <br> <u>Missing</u>:  6  ( 0.3711 %)</p><p> <u>Mean</u>:  50.33 	 <u>StdDev</u>:  19.13 <br><u>Median</u>:  49.71 	 <u>IQR</u>:  35.12 - 65.59 <br><u>Min</u>:  4.133 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Immigrant_Citizen_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Immigrant_Non.Citizen </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Immigrant_Non.Citizen_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1611 / 1617  ( 99.63 %) <br> <u>Missing</u>:  6  ( 0.3711 %)</p><p> <u>Mean</u>:  49.67 	 <u>StdDev</u>:  19.13 <br><u>Median</u>:  50.29 	 <u>IQR</u>:  34.41 - 64.88 <br><u>Min</u>:  0 	 <u>Max</u>:  95.87 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Immigrant_Non.Citizen_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Immigrant </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Immigrant_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  35.37 	 <u>StdDev</u>:  13.65 <br><u>Median</u>:  35.76 	 <u>IQR</u>:  25.23 - 45.21 <br><u>Min</u>:  0 	 <u>Max</u>:  73.6 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Immigrant_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Divorced_Separated </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Divorced_Separated_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  11.02 	 <u>StdDev</u>:  3.711 <br><u>Median</u>:  11 	 <u>IQR</u>:  9 - 13 <br><u>Min</u>:  0 	 <u>Max</u>:  30 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Divorced_Separated_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> 1, 20, 24, 21, 23, 22, 0, 2, 29, 30</div>
+</div>
+<div class="Row"><div class="Cell"><b> Married </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Married_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  41.29 	 <u>StdDev</u>:  10.97 <br><u>Median</u>:  41 	 <u>IQR</u>:  34 - 48 <br><u>Min</u>:  0 	 <u>Max</u>:  75 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Married_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  14  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Never_Married </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Never_Married_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  42.81 	 <u>StdDev</u>:  11.27 <br><u>Median</u>:  43 	 <u>IQR</u>:  35 - 50 <br><u>Min</u>:  15 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Never_Married_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  11  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Median_Household_Income </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Median_Household_Income_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1614 / 1617  ( 99.81 %) <br> <u>Missing</u>:  3  ( 0.1855 %)</p><p> <u>Mean</u>:  4.89 	 <u>StdDev</u>:  2.365 <br><u>Median</u>:  5 	 <u>IQR</u>:  3 - 6 <br><u>Min</u>:  0 	 <u>Max</u>:  23 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Median_Household_Income_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> 12, 11, 13, 23, 14, 21, 17, 16, 15, 20</div>
+</div>
+<div class="Row"><div class="Cell"><b> Opportunity_Youth </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Opportunity_Youth_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1603 / 1617  ( 99.13 %) <br> <u>Missing</u>:  14  ( 0.8658 %)</p><p> <u>Mean</u>:  14.09 	 <u>StdDev</u>:  7.164 <br><u>Median</u>:  13.75 	 <u>IQR</u>:  9.028 - 18.35 <br><u>Min</u>:  0 	 <u>Max</u>:  64.79 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Opportunity_Youth_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  22  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Homeless_count </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Homeless_count_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1131 / 1617  ( 69.94 %) <br> <u>Missing</u>:  486  ( 30.06 %)</p><p> <u>Mean</u>:  25.29 	 <u>StdDev</u>:  94.24 <br><u>Median</u>:  7 	 <u>IQR</u>:  1 - 22 <br><u>Min</u>:  0 	 <u>Max</u>:  2482 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Homeless_count_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  72  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Below_100_Poverty_Threshold </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Below_100_Poverty_Threshold_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1610 / 1617  ( 99.57 %) <br> <u>Missing</u>:  7  ( 0.4329 %)</p><p> <u>Mean</u>:  19.76 	 <u>StdDev</u>:  13.24 <br><u>Median</u>:  17.01 	 <u>IQR</u>:  9.398 - 28.3 <br><u>Min</u>:  0 	 <u>Max</u>:  91.84 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Below_100_Poverty_Threshold_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  18  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Below_200_Poverty_Threshold </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Below_200_Poverty_Threshold_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1610 / 1617  ( 99.57 %) <br> <u>Missing</u>:  7  ( 0.4329 %)</p><p> <u>Mean</u>:  42.23 	 <u>StdDev</u>:  21.56 <br><u>Median</u>:  41.31 	 <u>IQR</u>:  22.8 - 59.78 <br><u>Min</u>:  0 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Below_200_Poverty_Threshold_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> White </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/White_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  27.47 	 <u>StdDev</u>:  25.84 <br><u>Median</u>:  18.49 	 <u>IQR</u>:  4.595 - 48.63 <br><u>Min</u>:  0 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/White_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> American_Indian_Or_Native </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/American_Indian_Or_Native_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  0.4058 	 <u>StdDev</u>:  0.9614 <br><u>Median</u>:  0 	 <u>IQR</u>:  0 - 0.4697 <br><u>Min</u>:  0 	 <u>Max</u>:  15.85 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/American_Indian_Or_Native_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  140  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Asian </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Asian_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  12.89 	 <u>StdDev</u>:  14.96 <br><u>Median</u>:  8.184 	 <u>IQR</u>:  2.726 - 16.75 <br><u>Min</u>:  0 	 <u>Max</u>:  83.89 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Asian_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  132  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Black </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Black_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  8.393 	 <u>StdDev</u>:  12.99 <br><u>Median</u>:  3.632 	 <u>IQR</u>:  1.311 - 8.507 <br><u>Min</u>:  0 	 <u>Max</u>:  84.77 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Black_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  199  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Hispanic </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Hispanic_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  48.44 	 <u>StdDev</u>:  28.97 <br><u>Median</u>:  47.55 	 <u>IQR</u>:  21.73 - 73.81 <br><u>Min</u>:  0 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Hispanic_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> No outlier values found</div>
+</div>
+<div class="Row"><div class="Cell"><b> Other_Race </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Other_Race_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  0.2732 	 <u>StdDev</u>:  0.6153 <br><u>Median</u>:  0 	 <u>IQR</u>:  0 - 0.2838 <br><u>Min</u>:  0 	 <u>Max</u>:  4.906 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Other_Race_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  193  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Two_or_More_Races </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Two_or_More_Races_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1617 / 1617  ( 100 %) <br> <u>Missing</u>:  0  ( 0 %)</p><p> <u>Mean</u>:  2.13 	 <u>StdDev</u>:  2.122 <br><u>Median</u>:  1.585 	 <u>IQR</u>:  0.4215 - 3.192 <br><u>Min</u>:  0 	 <u>Max</u>:  15.59 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Two_or_More_Races_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  37  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Median_Rent_Price </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Median_Rent_Price_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1585 / 1617  ( 98.02 %) <br> <u>Missing</u>:  32  ( 1.979 %)</p><p> <u>Mean</u>:  1392 	 <u>StdDev</u>:  493.7 <br><u>Median</u>:  1234 	 <u>IQR</u>:  1052 - 1603 <br><u>Min</u>:  297 	 <u>Max</u>:  3500 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Median_Rent_Price_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  64  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> No_Vehicle_Households </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/No_Vehicle_Households_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1608 / 1617  ( 99.44 %) <br> <u>Missing</u>:  9  ( 0.5566 %)</p><p> <u>Mean</u>:  10.8 	 <u>StdDev</u>:  10.6 <br><u>Median</u>:  7.318 	 <u>IQR</u>:  3.425 - 15.02 <br><u>Min</u>:  0 	 <u>Max</u>:  89.6 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/No_Vehicle_Households_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  72  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Youth_in_Non.Family_Households </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Youth_in_Non.Family_Households_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1606 / 1617  ( 99.32 %) <br> <u>Missing</u>:  11  ( 0.6803 %)</p><p> <u>Mean</u>:  0.5475 	 <u>StdDev</u>:  2.356 <br><u>Median</u>:  0 	 <u>IQR</u>:  0 - 0 <br><u>Min</u>:  0 	 <u>Max</u>:  59.46 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Youth_in_Non.Family_Households_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> There are  326  outlier values</div>
+</div>
+<div class="Row"><div class="Cell"><b> Youth_in_Single_Parent_Households </b><p>  </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Youth_in_Single_Parent_Households_1.png" height="150" width="150"><br></div>
+<div class="Cell" style="align: top;"> <u>Data type</u>: Continuous <p> <u>Data length</u>:  1606 / 1617  ( 99.32 %) <br> <u>Missing</u>:  11  ( 0.6803 %)</p><p> <u>Mean</u>:  35.28 	 <u>StdDev</u>:  17.27 <br><u>Median</u>:  34.58 	 <u>IQR</u>:  22.29 - 47.39 <br><u>Min</u>:  0 	 <u>Max</u>:  100 </p></div>
+<div class="Cell"><img class="origimg" src="./1 Data Visualization ORIGINAL DATA_files/Youth_in_Single_Parent_Households_2.png" height="150" width="250"><br> <u>Outlier values</u>: <br> 85.71, 92.78, 95.19, 100, 91.83</div>
+</div>
+</div>
+</div>
+                <div data-role="popup" id="myContainer" style="display: none;">
+                <img id="popup_img" src="http://localhost:12244/session/report.html">
+                </div>
+                
+                
+                
+                <p>
+                </p><div class="onetoone" style="display: none;">
+                <form id="myform2">
+                <span> <input type="button" id="less" value=" &lt;&lt; "> </span>
+                <span> <input id="idx" name="idx" value="1"></span>
+                <span> <input type="button" id="more" value=" &gt;&gt; "> </span>
+                </form>
+                </div>
+                <p>
+                
+                
+</p><span style="border-radius: 10px !important; text-indent: 12px !important; width: auto !important; height: 20px !important; padding: 0px 8px !important; text-align: center !important; vertical-align: middle !important; font: bold 11px / 20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important; color: rgb(255, 255, 255) !important; background: url(&quot;data:image/svg+xml;base64,PHN2ZyBpZD0ic291cmNlIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNFNjAwMjMiPjwvY2lyY2xlPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgNkMwIDguNTYxNSAxLjYwNTUgMTAuNzQ4NSAzLjg2NSAxMS42MDlDMy44MSAxMS4xNDA1IDMuNzUxNSAxMC4zNjggMy44Nzc1IDkuODI2QzMuOTg2IDkuMzYgNC41NzggNi44NTcgNC41NzggNi44NTdDNC41NzggNi44NTcgNC4zOTk1IDYuNDk5NSA0LjM5OTUgNS45N0M0LjM5OTUgNS4xNCA0Ljg4MDUgNC41MiA1LjQ4IDQuNTJDNS45OSA0LjUyIDYuMjM2IDQuOTAyNSA2LjIzNiA1LjM2MUM2LjIzNiA1Ljg3MzUgNS45MDk1IDYuNjM5NSA1Ljc0MSA3LjM1QzUuNjAwNSA3Ljk0NDUgNi4wMzk1IDguNDI5NSA2LjYyNTUgOC40Mjk1QzcuNjg3IDguNDI5NSA4LjUwMzUgNy4zMSA4LjUwMzUgNS42OTRDOC41MDM1IDQuMjYzNSA3LjQ3NTUgMy4yNjQgNi4wMDggMy4yNjRDNC4zMDkgMy4yNjQgMy4zMTE1IDQuNTM4NSAzLjMxMTUgNS44NTZDMy4zMTE1IDYuMzY5NSAzLjUwOSA2LjkxOTUgMy43NTYgNy4yMTlDMy44MDQ1IDcuMjc4NSAzLjgxMiA3LjMzIDMuNzk3NSA3LjM5MDVDMy43NTIgNy41Nzk1IDMuNjUxIDcuOTg1IDMuNjMxNSA4LjA2OEMzLjYwNSA4LjE3NyAzLjU0NSA4LjIwMDUgMy40MzE1IDguMTQ3NUMyLjY4NTUgNy44MDA1IDIuMjE5NSA2LjcxIDIuMjE5NSA1LjgzNEMyLjIxOTUgMy45NDk1IDMuNTg4IDIuMjE5NSA2LjE2NTUgMi4yMTk1QzguMjM3NSAyLjIxOTUgOS44NDggMy42OTYgOS44NDggNS42NjlDOS44NDggNy43Mjc1IDguNTUwNSA5LjM4NDUgNi43NDg1IDkuMzg0NUM2LjE0MyA5LjM4NDUgNS41NzQ1IDkuMDY5NSA1LjM3OTUgOC42OThDNS4zNzk1IDguNjk4IDUuMDggOS44MzkgNS4wMDc1IDEwLjExOEM0Ljg2NjUgMTAuNjYgNC40NzU1IDExLjM0NiA0LjIzMyAxMS43MzU1QzQuNzkyIDExLjkwNzUgNS4zODUgMTIgNiAxMkM5LjMxMzUgMTIgMTIgOS4zMTM1IDEyIDZDMTIgMi42ODY1IDkuMzEzNSAwIDYgMEMyLjY4NjUgMCAwIDIuNjg2NSAwIDZaIiBmaWxsPSJ3aGl0ZSI+PC9wYXRoPgo8L3N2Zz4=&quot;) 4px 50% / 12px 12px no-repeat rgb(230, 0, 35) !important; position: absolute !important; opacity: 1 !important; z-index: 8675309 !important; display: none; cursor: pointer !important; border: none !important; -webkit-font-smoothing: antialiased !important; top: 510.748px; left: 299.981px;">Save</span><span style="border-radius: 12px; width: 24px !important; height: 24px !important; background: url(&quot;data:image/svg+xml;base64,PHN2ZyBpZD0ic291cmNlIiB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyMiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iMTEiIGZpbGw9ImJsYWNrIiBmaWxsLW9wYWNpdHk9IjAuOCI+PC9jaXJjbGU+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTUuMDgzNCA0LjU4MzMzSDEzLjMzMzRWNS43NDk5OUgxNS4wODM0QzE1LjcyNjggNS43NDk5OSAxNi4yNSA2LjI3MzI0IDE2LjI1IDYuOTE2NjZWOC42NjY2NkgxNy40MTY3VjYuOTE2NjZDMTcuNDE2NyA1LjYyOTgzIDE2LjM3MDIgNC41ODMzMyAxNS4wODM0IDQuNTgzMzNaTTE2LjI1IDE1LjA4MzNDMTYuMjUgMTUuNzI2NyAxNS43MjY4IDE2LjI1IDE1LjA4MzQgMTYuMjVIMTMuMzMzNFYxNy40MTY3SDE1LjA4MzRDMTYuMzcwMiAxNy40MTY3IDE3LjQxNjcgMTYuMzcwMiAxNy40MTY3IDE1LjA4MzNWMTMuMzMzM0gxNi4yNVYxNS4wODMzWk01Ljc1MDA0IDE1LjA4MzNWMTMuMzMzM0g0LjU4MzM3VjE1LjA4MzNDNC41ODMzNyAxNi4zNzAyIDUuNjI5ODcgMTcuNDE2NyA2LjkxNjcxIDE3LjQxNjdIOC42NjY3MVYxNi4yNUg2LjkxNjcxQzYuMjczMjkgMTYuMjUgNS43NTAwNCAxNS43MjY3IDUuNzUwMDQgMTUuMDgzM1pNNS43NTAwNCA2LjkxNjY2QzUuNzUwMDQgNi4yNzMyNCA2LjI3MzI5IDUuNzQ5OTkgNi45MTY3MSA1Ljc0OTk5SDguNjY2NzFWNC41ODMzM0g2LjkxNjcxQzUuNjI5ODcgNC41ODMzMyA0LjU4MzM3IDUuNjI5ODMgNC41ODMzNyA2LjkxNjY2VjguNjY2NjZINS43NTAwNFY2LjkxNjY2Wk05LjI1MDA0IDEwLjcwODNDOS4yNTAwNCA5LjkwNDQ5IDkuOTA0NTQgOS4yNDk5OSAxMC43MDg0IDkuMjQ5OTlDMTEuNTEyMiA5LjI0OTk5IDEyLjE2NjcgOS45MDQ0OSAxMi4xNjY3IDEwLjcwODNDMTIuMTY2NyAxMS41MTIyIDExLjUxMjIgMTIuMTY2NyAxMC43MDg0IDEyLjE2NjdDOS45MDQ1NCAxMi4xNjY3IDkuMjUwMDQgMTEuNTEyMiA5LjI1MDA0IDEwLjcwODNaTTEzLjYyNSAxNC41QzEzLjg0OSAxNC41IDE0LjA3MyAxNC40MTQ4IDE0LjI0NCAxNC4yNDM5QzE0LjU4NTIgMTMuOTAyMSAxNC41ODUyIDEzLjM0NzkgMTQuMjQ0IDEzLjAwNjFMMTMuMDcwMyAxMS44MzNDMTMuMjM0MiAxMS40OTA2IDEzLjMzMzQgMTEuMTEyNiAxMy4zMzM0IDEwLjcwODNDMTMuMzMzNCA5LjI2MTA4IDEyLjE1NTYgOC4wODMzMyAxMC43MDg0IDguMDgzMzNDOS4yNjExMiA4LjA4MzMzIDguMDgzMzcgOS4yNjEwOCA4LjA4MzM3IDEwLjcwODNDOC4wODMzNyAxMi4xNTU2IDkuMjYxMTIgMTMuMzMzMyAxMC43MDg0IDEzLjMzMzNDMTEuMTEyNiAxMy4zMzMzIDExLjQ5MDYgMTMuMjM0MiAxMS44MzMgMTMuMDcwMkwxMy4wMDYxIDE0LjI0MzlDMTMuMTc3IDE0LjQxNDggMTMuNDAxIDE0LjUgMTMuNjI1IDE0LjVaIiBmaWxsPSJ3aGl0ZSI+PC9wYXRoPgo8L3N2Zz4=&quot;) 50% 50% / 24px 24px no-repeat rgba(0, 0, 0, 0.4) !important; position: absolute !important; opacity: 1 !important; z-index: 8675309 !important; display: none; cursor: pointer !important; border: none !important; top: 510.748px; left: 407.981px;"></span></body></html>
